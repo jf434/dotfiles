@@ -26,12 +26,13 @@ foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+icon = #fff
 
-[bar/example]
+[bar/simple]
 ;monitor = ${env:MONITOR:HDMI-1}
-dpi = 322
+dpi = 321
 width = 100%
-height = 50
+height = 65
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 6.0
@@ -40,10 +41,10 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 5 
+line-size = 5
 line-color = #f00
 
-border-size = 5
+border-size = 3
 border-color = #00000000
 
 padding-left = 0
@@ -52,15 +53,17 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = San Francisco Display Regular:size=10;1
-font-1 = Symbola:style=Regular:scale=10;0
-font-2 = unifont:fontformat=truetype:size=10:antialias=false;0
-font-3 = "Font Awesome 5 Free:size=10:pixelsize=10"
-font-4 = "Wuncon Siji:style=Regular:scale=100"
+font-0 = "fixed:pixelsize=9;1"
+font-1 = "San Francisco Display Regular:size=9;1"
+font-2 = "Symbola:style=Regular:size=10;0"
+font-3 = "unifont:fontformat=truetype:size=9:antialias=false;0"
+font-4 = "Font Awesome 5 Free:size=9:pixelsize=10"
+font-5 = "siji:pixelsize=9;0"
+font-6 = "Wuncon Siji:style=Regular:size=8"
 
 modules-left = bspwm
 modules-center = mpd pulseaudio date
-modules-right = xkeyboard cpu memory wlan eth battery poweroff
+modules-right = system-usb-udev xkeyboard cpu memory wlan eth battery poweroff
 
 tray-position = right
 tray-padding = 2
@@ -73,7 +76,7 @@ tray-maxsize = 1000
 ;override-redirect = true
 
 ;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
+;scroll-down = bspwm-deskpre
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
@@ -89,8 +92,8 @@ label = %title:0:30:...%
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "⌨ "
+format-prefix-foreground = ${colors.icon}
 format-prefix-underline = ${colors.secondary}
 
 label-layout = %layout%
@@ -175,11 +178,11 @@ label-urgent-padding = ${module/bspwm.label-urgent-padding}
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+icon-prev = ⏮
+icon-stop = ⏺
+icon-play = ⏵
+icon-pause = ⏸
+icon-next = ⏭
 
 label-song-maxlen = 25
 label-song-ellipsis = true
@@ -209,16 +212,16 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 15
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "📈 "
+format-prefix-foreground = ${colors.icon}
 format-underline = #f90000
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 15
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "⌛ "
+format-prefix-foreground = ${colors.icon}
 format-underline = #4bffdc
 label = %percentage_used%%
 
@@ -231,18 +234,19 @@ format-connected = <ramp-signal> <label-connected>
 format-connected-underline = #9f78e1
 label-connected = %essid%
 
-format-disconnected =
+format-disconnected = 🚫
 ;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
+format-disconnected-foreground = ${colors.icon}
+format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 =
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-0 = ▎ 
+ramp-signal-1 = ▍ 
+ramp-signal-2 = ▌ 
+ramp-signal-3 = ▊ 
+ramp-signal-4 = █ 
+ramp-signal-foreground = ${colors.icon}
 
 [module/eth]
 type = internal/network
@@ -270,8 +274,8 @@ date-alt = " %Y-%m-%d"
 time = %l:%M %p
 time-alt = %H:%M:%S
 
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+format =   <label>
+format-foreground = ${colors.icon}
 format-underline = #0a6cf5
 
 label =  %date%  %time%
@@ -280,13 +284,13 @@ label =  %date%  %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+label-volume = 🔊 %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted = 🔇 muted
 label-muted-foreground = #666
 
-bar-volume-width = 10
+bar-volume-width = 1
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55
@@ -295,11 +299,11 @@ bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-indicator = 
 bar-volume-indicator-font = 2
-bar-volume-fill = ─
+bar-volume-fill = 
 bar-volume-fill-font = 2
-bar-volume-empty = ─
+bar-volume-empty = 
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
@@ -338,30 +342,33 @@ adapter = ADP1
 full-at = 98
 poll-interval = 60
 
-format-charging = <animation-charging> <label-charging>
+format-charging = 🔌  <label-charging>
 format-charging-underline = #ffb52a
+format-charging-foreground = ${colors.icon}
 
-format-discharging = <animation-discharging> <label-discharging>
+format-discharging = 🔋 <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
+format-discharging-foreground = ${colors.icon}
 
-format-full-prefix = " "
+format-full-prefix = "😄 "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
+format-full-foreground = ${colors.icon}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 🔌
+animation-charging-1 = 🔌
+animation-charging-2 = 🔌
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
+animation-discharging-0 = 🔋
+animation-discharging-1 = 🔋
+animation-discharging-2 = 🔋
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
@@ -393,7 +400,7 @@ format-spacing = 1
 
 label-open = 
 label-open-foreground = ${colors.secondary}
-label-close =  cancel
+label-close = ⏻ cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
@@ -424,5 +431,12 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+[module/system-usb-udev]
+type = custom/script
+exec = ~/.config/polybar/system-usb-udev.sh
+tail = true
+click-left = ~/.config/polybar/system-usb-udev.sh --mount
+click-right = ~/.config/polybar/system-usb-udev.sh --unmount
 
 ; vim:ft=dosini

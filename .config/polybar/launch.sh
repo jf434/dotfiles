@@ -8,6 +8,6 @@ while pgrep -u $UID -x polybar >/dev/null;do sleep 1; done
 
 #Launch polybar
 ~/.config/polybar/config
-polybar example &
+polybar simple &
 
 echo "Polybar launched"
