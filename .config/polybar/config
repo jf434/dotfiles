@@ -235,7 +235,7 @@ type = internal/network
 interface = wlp2s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected =  <label-connected>
 ;format-connected-underline = #9f78e1
 label-connected = %essid%  %signal% 
 
@@ -360,8 +360,8 @@ format-discharging =  <ramp-capacity> <label-discharging>
 ;format-discharging-underline = ${self.format-charging-underline}
 format-discharging-foreground = ${colors.icon}
 
-format-full-prefix = "😄 "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.icon}
 ;format-full-underline = ${self.format-charging-underline}
 format-full-foreground = ${colors.icon}
 
