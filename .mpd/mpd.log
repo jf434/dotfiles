@@ -1,0 +1,26 @@
+Feb 09 00:17 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Feb 09 00:17 : exception: Failed to open '/home/riemann/.mpd/mpdstate': No such file or directory
+Feb 09 00:17 : config: option 'device' on line 13 was not recognized
+Feb 09 00:17 : exception: Failed to access /home/riemann/Music: No such file or directory
+Feb 09 11:00 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Feb 09 11:00 : config: option 'device' on line 14 was not recognized
+Feb 09 11:00 : client: [0] opened from 127.0.0.1:51698
+Feb 09 11:40 : client: [0] closed
+Feb 09 12:03 : client: [1] opened from 127.0.0.1:52496
+Feb 09 12:03 : client: [1] closed
+Feb 09 18:58 : exception: RTIOThread could not get realtime scheduling, continuing anyway: sched_setscheduler failed: Operation not permitted
+Feb 09 18:58 : config: option 'device' on line 14 was not recognized
+Feb 09 18:58 : client: [0] opened from 127.0.0.1:36694
+Feb 09 18:58 : client: [0] closed
+Feb 09 19:01 : client: [1] opened from 127.0.0.1:36786
+Feb 09 19:01 : client: [1] closed
+Feb 09 19:04 : client: [2] opened from 127.0.0.1:36790
+Feb 09 19:04 : client: [2] closed
+Feb 09 19:04 : client: [3] opened from 127.0.0.1:36800
+Feb 09 19:04 : client: [3] closed
+Feb 09 19:04 : client: [4] opened from 127.0.0.1:36804
+Feb 09 19:04 : client: [4] closed
+Feb 09 19:04 : client: [5] opened from 127.0.0.1:36808
+Feb 09 19:04 : client: [5] closed
+Feb 09 19:06 : client: [6] opened from 127.0.0.1:36812
+Feb 09 19:06 : client: [6] closed

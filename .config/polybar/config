@@ -18,10 +18,12 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+background = #5a000000
+;#222
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
+foreground = #eee
+;#dfdfdf
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
@@ -31,17 +33,17 @@ icon = #fff
 [bar/simple]
 ;monitor = ${env:MONITOR:HDMI-1}
 dpi = 321
-width = 100%
-height = 65
-;offset-x = 1%
+width = 95%
+height = 60
+offset-x = 2.5%
 ;offset-y = 1%
-radius = 6.0
+radius = 12.0
 fixed-center = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 5
+line-size = 0
 line-color = #f00
 
 border-size = 3
@@ -50,20 +52,20 @@ border-color = #00000000
 padding-left = 0
 padding-right = 2
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 2
+module-margin-right = 1
 
-font-0 = "fixed:pixelsize=9;1"
-font-1 = "San Francisco Display Regular:size=9;1"
-font-2 = "Symbola:style=Regular:size=10;0"
-font-3 = "unifont:fontformat=truetype:size=9:antialias=false;0"
-font-4 = "Font Awesome 5 Free:size=9:pixelsize=10"
-font-5 = "siji:pixelsize=9;0"
+font-0 = "fixed:pixelsize=9;5"
+font-1 = "San Francisco Display Regular:size=9;5"
+font-2 = "Symbola:style=Regular:size=10;5"
+font-3 = "unifont:fontformat=truetype:size=9:antialias=false;5"
+font-4 = "Font Awesome 5 Free Solid:style=Solid:size=9:5"
+font-5 = "siji:pixelsize=9;5"
 font-6 = "Wuncon Siji:style=Regular:size=8"
 
 modules-left = bspwm
 modules-center = mpd pulseaudio date
-modules-right = system-usb-udev xkeyboard cpu memory wlan eth battery poweroff
+modules-right = system-usb-udev xkeyboard cpu memory wlan eth battery powermenu
 
 tray-position = right
 tray-padding = 2
@@ -71,12 +73,12 @@ tray-maxsize = 1000
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
-;override-redirect = true
+override-redirect = true
 
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskpre
+scroll-up = bspwm-desknext
+scroll-down = bspwm-deskpre
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
@@ -92,12 +94,12 @@ label = %title:0:30:...%
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = "⌨ "
+format-prefix = " "
 format-prefix-foreground = ${colors.icon}
-format-prefix-underline = ${colors.secondary}
+;format-prefix-underline = ${colors.secondary}
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+;label-layout-underline = ${colors.secondary}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
@@ -117,19 +119,22 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = %index%
+label-focused = 
+;%index%
+label-focused-foreground = ${colors.icon}
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
-label-occupied = %index%
+label-occupied =  
+label-occupied-foreground = ${colors.icon}
 label-occupied-padding = 2
 
-label-urgent = %index%!
+label-urgent = 
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %index%
+label-empty = 
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
@@ -212,7 +217,7 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 15
-format-prefix = "📈 "
+format-prefix = " "
 format-prefix-foreground = ${colors.icon}
 format-underline = #f90000
 label = %percentage:2%%
@@ -220,7 +225,7 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 15
-format-prefix = "⌛ "
+format-prefix = " "
 format-prefix-foreground = ${colors.icon}
 format-underline = #4bffdc
 label = %percentage_used%%
@@ -231,13 +236,14 @@ interface = wlp2s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
+;format-connected-underline = #9f78e1
+label-connected = %essid%  %signal% 
 
-format-disconnected = 🚫
+format-disconnected = 
+
 ;format-disconnected = <label-disconnected>
 format-disconnected-foreground = ${colors.icon}
-format-disconnected-underline = ${self.format-connected-underline}
+;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
@@ -274,17 +280,17 @@ date-alt = " %Y-%m-%d"
 time = %l:%M %p
 time-alt = %H:%M:%S
 
-format =   <label>
+format =   <label>
 format-foreground = ${colors.icon}
-format-underline = #0a6cf5
+;format-underline = #0a6cf5
 
 label =  %date%  %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = 🔊 %percentage%%
+format-volume = <ramp-volume> <bar-volume>
+label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
 
 label-muted = 🔇 muted
@@ -306,6 +312,10 @@ bar-volume-fill-font = 2
 bar-volume-empty = 
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
 [module/alsa]
 type = internal/alsa
@@ -339,26 +349,28 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/battery
 battery = BAT0
 adapter = ADP1
-full-at = 98
+full-at = 95
 poll-interval = 60
 
-format-charging = 🔌  <label-charging>
-format-charging-underline = #ffb52a
+format-charging =  <ramp-capacity> <label-charging>
+;format-charging-underline = #ffb52a
 format-charging-foreground = ${colors.icon}
 
-format-discharging = 🔋 <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging =  <ramp-capacity> <label-discharging>
+;format-discharging-underline = ${self.format-charging-underline}
 format-discharging-foreground = ${colors.icon}
 
 format-full-prefix = "😄 "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+;format-full-underline = ${self.format-charging-underline}
 format-full-foreground = ${colors.icon}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.icon}
 
 animation-charging-0 = 🔌
 animation-charging-1 = 🔌
@@ -398,10 +410,10 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close = ⏻ cancel
-label-close-foreground = ${colors.secondary}
+label-open = 
+;label-open-foreground = ${colors.secondary}
+label-close = cancel
+;label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 

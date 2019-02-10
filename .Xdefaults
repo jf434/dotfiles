@@ -41,5 +41,5 @@ UXTerm*faceSize: 12
 urxvt.scrollBar: false
 urxvt.font: xft:Inconsolata for Powerline:pixelsize=30,xft:Symbola,xft:Noto Emoji:letterSpace: 3+
 urxvt.urlLauncher: /usr/bin/firefox
-
+URxvt.perl-ext-common: selection-to-clipboard
 
