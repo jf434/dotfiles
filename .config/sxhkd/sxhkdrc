@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + @space
-	dmenu_run
+	rofi -show run
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -136,3 +136,7 @@ XF86MonBrightnessDown
 
 XF86MonBrightnessUp
 	xrandr --output eDP-1 --brightness $((`xrandr --verbose | grep -m 1 -i brightness | cut -f2 -d ' '`+0.1))
+
+#Screenshot
+Print
+	scrot
